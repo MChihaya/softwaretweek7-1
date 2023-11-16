@@ -35,6 +35,7 @@ int main (int argc, char *argv[]) {
 
     Point p = {.x = 0, .y = 0, .v = 1};  // 現在操作しているオブジェクト
     int c = '_';  // Dummy 
+    char status = 0;
 
     system("/bin/stty raw onlcr");  // enterを押さなくてもキー入力を受け付けるようになる
 
@@ -42,23 +43,26 @@ int main (int argc, char *argv[]) {
         system("clear");
         printf("Press '.' to close\r\n");        
         printf("You pressed '%c'\r\n", c);
-        if (p.y == 4){
+        if (status == 1){
             b.field[p.y][p.x] = p.v + '0';
             p.x = 0;
             p.y = 0;
+            status = 0;
         } else if (c == 'd') {
             if (p.x < 4){
                 ++p.x;
             }
-            
         } else if(c == 'a'){
             if (p.x > 0){
                 --p.x;
             }
         } else if (c == 's'){
-            if (p.y < 4){
-                p.y = 4;
+            int t = 4;
+            while(b.field[t][p.x] == '-'){
+                --t;
             }
+            p.y = t;
+            status = 1;
         } else if (c == 'w'){
             if (p.y > 0){
                 --p.y;
