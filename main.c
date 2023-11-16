@@ -42,25 +42,28 @@ int main (int argc, char *argv[]) {
         system("clear");
         printf("Press '.' to close\r\n");        
         printf("You pressed '%c'\r\n", c);
-
-        if (c == 'd') {
-            if(p.x < 4){
+        if (p.y == 4){
+            b.field[p.y][p.x] = p.v + '0';
+            p.x = 0;
+            p.y = 0;
+        } else if (c == 'd') {
+            if (p.x < 4){
                 ++p.x;
             }
             
         } else if(c == 'a'){
-            if(p.x > 0){
+            if (p.x > 0){
                 --p.x;
             }
-        }else if(c == 's'){
-            if(p.y < 4){
-                ++p.y;
+        } else if (c == 's'){
+            if (p.y < 4){
+                p.y = 4;
             }
-        }else if(c == 'w'){
-            if(p.y > 0){
+        } else if (c == 'w'){
+            if (p.y > 0){
                 --p.y;
             }
-        }
+        } 
 
         print_board(b, p);
 
