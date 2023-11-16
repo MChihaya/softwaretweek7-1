@@ -68,16 +68,25 @@ int main (int argc, char *argv[]) {
                     } else if (b.field[i-1][j] == b.field[i][j]){
                         b.field[i - 1][j] = '-';
                         b.field[i][j] += 1;
-                        status = 4;
+                        status = 5;
                         i = 5;
                         break;
-                    } else if (b.field[i][j + 1] == b.field[i][j]){
-                        b.field[i][j + 1] = '-';
-                        b.field[i][j] += 1;
-                        status = 4;
-                        i = 5;
-                        break;
-                   }
+                    }
+                }
+            }
+            if (status == 3){
+                for (int i = 1; i < 5; ++i){
+                    for (int j = 0; j < 4; ++j){
+                        if (b.field[i][j] == '-'){
+
+                        }else if (b.field[i][j + 1] == b.field[i][j]){
+                            b.field[i][j + 1] = '-';
+                            b.field[i][j] += 1;
+                            status = 4;
+                            i = 5;
+                            break;
+                        }
+                    }
                 }
             }
             status = confirm_change(b);
