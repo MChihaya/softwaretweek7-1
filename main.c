@@ -58,7 +58,7 @@ int main (int argc, char *argv[]) {
             }
         } else if (c == 's'){
             int t = 4;
-            while(b.field[t][p.x] == '-'){
+            while(b.field[t][p.x] != '-'){
                 --t;
             }
             p.y = t;
