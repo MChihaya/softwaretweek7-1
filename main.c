@@ -68,7 +68,7 @@ int main (int argc, char *argv[]) {
                     } else if (b.field[i-1][j] == b.field[i][j]){
                         b.field[i - 1][j] = '-';
                         b.field[i][j] += 1;
-                        status = 5;
+                        status = 4;
                         i = 5;
                         break;
                     }
